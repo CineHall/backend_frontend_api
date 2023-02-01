@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mar. 31 jan. 2023 à 16:17
+-- Généré le : mer. 01 fév. 2023 à 16:13
 -- Version du serveur : 10.4.27-MariaDB
 -- Version de PHP : 7.4.33
 
@@ -47,6 +47,18 @@ CREATE TABLE `reservation` (
   `id_u` int(11) NOT NULL,
   `date_r` date NOT NULL,
   `nbr_place` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `salle`
+--
+
+CREATE TABLE `salle` (
+  `id_s` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `place` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -231,9 +243,15 @@ ALTER TABLE `film`
 --
 ALTER TABLE `reservation`
   ADD PRIMARY KEY (`id_r`),
-  ADD KEY `salle` (`id_s`),
   ADD KEY `film` (`id_f`),
-  ADD KEY `user` (`id_u`);
+  ADD KEY `user` (`id_u`),
+  ADD KEY `salle` (`id_s`);
+
+--
+-- Index pour la table `salle`
+--
+ALTER TABLE `salle`
+  ADD PRIMARY KEY (`id_s`);
 
 --
 -- Index pour la table `salle1`
@@ -276,6 +294,12 @@ ALTER TABLE `reservation`
   MODIFY `id_r` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT pour la table `salle`
+--
+ALTER TABLE `salle`
+  MODIFY `id_s` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT pour la table `salle1`
 --
 ALTER TABLE `salle1`
@@ -308,6 +332,7 @@ ALTER TABLE `users`
 --
 ALTER TABLE `reservation`
   ADD CONSTRAINT `film` FOREIGN KEY (`id_f`) REFERENCES `film` (`id_f`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `salle` FOREIGN KEY (`id_s`) REFERENCES `salle` (`id_s`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `user` FOREIGN KEY (`id_u`) REFERENCES `users` (`id_u`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
