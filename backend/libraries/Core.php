@@ -9,24 +9,22 @@
 class Core
 {
 
-    private $Controller = 'Cruises';
-    private $method = 'index';
+    private $Controller = 'hallsController';
+    private $method = 'getAll';
     private $param = [];
 
     public function __construct()
     {
-        require_once '../app/libraries/Controllers.class.php';
-        require_once '../app/libraries/Database.class.php';
 
         $url = $this->getUrl();
         if (isset($url[0])) {
-            if (file_exists('../app/controllers/' . ucwords($url[0]) . '.class.php')) {
+            if (file_exists('../backend/controllers/' . ucwords($url[0]) . '.php')) {
                 $this->Controller = ucwords($url[0]);
             }
             unset($url[0]);
         }
         //require the controller
-        require_once '../app/controllers/' . $this->Controller . '.class.php';
+        require_once '../backend/controllers/' . $this->Controller . '.php';
 
         //instantiation of controller
         $this->Controller = new $this->Controller;
@@ -40,7 +38,7 @@ class Core
 
         // var_dump(array_values($url));
 
-    
+
         $this->param = $url ? array_values($url) : []; //ternary operator
         //call the function
         call_user_func_array([$this->Controller, $this->method], $this->param);
