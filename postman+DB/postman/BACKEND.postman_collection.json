@@ -15,15 +15,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost/backend_frontend_api/backend/controllers/movies/GetAllMovies.php",
+							"raw": "http://localhost/backend_frontend_api/movies/GetAllMovies.php",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"path": [
 								"backend_frontend_api",
-								"backend",
-								"controllers",
 								"movies",
 								"GetAllMovies.php"
 							]
@@ -43,7 +41,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\" : \"marouane\",\r\n    \"email\" : \"email@email.email\",\r\n    \"password\" : \"43\"\r\n}",
+							"raw": "{\r\n    \"name\" : \"marouane\",\r\n    \"email\" : \"email@email.email\",\r\n    \"password\" : \"4d3\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -51,15 +49,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost/backend_frontend_api/backend/controllers/users/register.php",
+							"raw": "http://localhost/backend_frontend_api/users/register.php",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"path": [
 								"backend_frontend_api",
-								"backend",
-								"controllers",
 								"users",
 								"register.php"
 							]
@@ -82,15 +78,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost/backend_frontend_api/backend/controllers/users/login.php",
+							"raw": "http://localhost/backend_frontend_api/users/login.php",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"path": [
 								"backend_frontend_api",
-								"backend",
-								"controllers",
 								"users",
 								"login.php"
 							]
@@ -112,15 +106,13 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost/backend_frontend_api/backend/controllers/hall_1/get_all_places.php",
+									"raw": "http://localhost/backend_frontend_api/hall_1/get_all_places.php",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
 									"path": [
 										"backend_frontend_api",
-										"backend",
-										"controllers",
 										"hall_1",
 										"get_all_places.php"
 									]
@@ -134,15 +126,13 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost/backend_frontend_api/backend/controllers/hall_1/get_full_places.php",
+									"raw": "http://localhost/backend_frontend_api/hall_1/get_full_places.php",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
 									"path": [
 										"backend_frontend_api",
-										"backend",
-										"controllers",
 										"hall_1",
 										"get_full_places.php"
 									]
@@ -156,15 +146,13 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost/backend_frontend_api/backend/controllers/hall_1/get_empty_places.php",
+									"raw": "http://localhost/backend_frontend_api/hall_1/get_empty_places.php",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
 									"path": [
 										"backend_frontend_api",
-										"backend",
-										"controllers",
 										"hall_1",
 										"get_empty_places.php"
 									]
@@ -183,15 +171,13 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost/backend_frontend_api/backend/controllers/hall_2/get_all_places.php",
+									"raw": "http://localhost/backend_frontend_api/hall_2/get_all_places.php",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
 									"path": [
 										"backend_frontend_api",
-										"backend",
-										"controllers",
 										"hall_2",
 										"get_all_places.php"
 									]
@@ -205,15 +191,13 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost/backend_frontend_api/backend/controllers/hall_2/get_full_places.php",
+									"raw": "http://localhost/backend_frontend_api/hall_2/get_full_places.php",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
 									"path": [
 										"backend_frontend_api",
-										"backend",
-										"controllers",
 										"hall_2",
 										"get_full_places.php"
 									]
@@ -227,15 +211,13 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost/backend_frontend_api/backend/controllers/hall_2/get_empty_places.php",
+									"raw": "http://localhost/backend_frontend_api/hall_2/get_empty_places.php",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
 									"path": [
 										"backend_frontend_api",
-										"backend",
-										"controllers",
 										"hall_2",
 										"get_empty_places.php"
 									]
@@ -254,15 +236,13 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost/backend_frontend_api/backend/controllers/hall_3/get_all_places.php",
+									"raw": "http://localhost/backend_frontend_api/hall_3/get_all_places.php",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
 									"path": [
 										"backend_frontend_api",
-										"backend",
-										"controllers",
 										"hall_3",
 										"get_all_places.php"
 									]
@@ -276,15 +256,13 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost/backend_frontend_api/backend/controllers/hall_3/get_empty_places.php",
+									"raw": "http://localhost/backend_frontend_api/hall_3/get_empty_places.php",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
 									"path": [
 										"backend_frontend_api",
-										"backend",
-										"controllers",
 										"hall_3",
 										"get_empty_places.php"
 									]
@@ -298,15 +276,13 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost/backend_frontend_api/backend/controllers/hall_3/get_full_places.php",
+									"raw": "http://localhost/backend_frontend_api/hall_3/get_full_places.php",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
 									"path": [
 										"backend_frontend_api",
-										"backend",
-										"controllers",
 										"hall_3",
 										"get_full_places.php"
 									]
@@ -336,15 +312,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost/backend_frontend_api/backend/controllers/Reservation/add_reservation.php",
+							"raw": "http://localhost/backend_frontend_api/Reservation/add_reservation.php",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"path": [
 								"backend_frontend_api",
-								"backend",
-								"controllers",
 								"Reservation",
 								"add_reservation.php"
 							]
@@ -359,7 +333,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\" : \"15\"\r\n}",
+							"raw": "{\r\n    \"id\" : \"16\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -367,15 +341,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost/backend_frontend_api/backend/controllers/Reservation/delete_reservation.php",
+							"raw": "http://localhost/backend_frontend_api/Reservation/delete_reservation.php",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"path": [
 								"backend_frontend_api",
-								"backend",
-								"controllers",
 								"Reservation",
 								"delete_reservation.php"
 							]
