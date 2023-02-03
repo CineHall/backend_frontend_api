@@ -1,0 +1,63 @@
+<?php
+
+
+
+session_start();
+header('Access-Control-Allow-Origin: *');
+header('Content-Type: application/json; charset=utf-8');
+header('Access-Control-Allow-Methods: GET');
+header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
+
+        require_once '../../config/Database.php';
+        require_once '../../models/reservation.php';
+
+
+        $database = new Database;
+        $connect = $database->connect();
+
+        $reservation = new reservation($connect);
+
+        $result = $reservation->get_reservation();
+
+        $num = $result->rowCount();
+
+        if ($num > 0) {
+            // movie array
+            $reservations_arr = array();
+            // $movies_arr['data'] = array();
+        
+            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                extract($row);
+
+                $reservation_item = array(
+                    'id' => $id,
+                    'id_user' => $id_user,
+                    'salle_name' => $salle_name,
+                    'place_numero' => $place_numero,
+                    'reservation_date' => $reservation_date,
+                    'price' => $price,
+                );
+
+               
+        
+                // Push to "data"
+                array_push($reservations_arr, $reservation_item);
+            }
+        
+            // Turn to JSON & output
+            echo json_encode($reservations_arr);
+        } else {
+            // No movies
+            echo json_encode(
+                array('message' => 'No reservations Found')
+            );
+        }
+
+
+
+
+
+
+
+
+?>

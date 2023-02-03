@@ -354,6 +354,26 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "get all reservation",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/backend_frontend_api/Reservation/get_all_reservation.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"backend_frontend_api",
+								"Reservation",
+								"get_all_reservation.php"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}

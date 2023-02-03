@@ -114,4 +114,12 @@ class reservation
 
         return false;
     }
+    public function get_reservation()
+    {
+        $query = 'SELECT * FROM reservation';
+        
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt;
+    }
 }
