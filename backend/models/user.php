@@ -25,8 +25,12 @@ class user
         $query = "SELECT * FROM user WHERE token=:token";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':token', $this->token);
-        $stmt->execute();
-        return $stmt;
+        if ($stmt->execute()) {
+            return $stmt;
+        } else {
+            return false;
+        }
+        
     }
 
 
@@ -40,7 +44,7 @@ class user
         $this->email = htmlspecialchars(strip_tags($this->email));
         $this->hashPass = password_hash($this->password, PASSWORD_BCRYPT);
         $this->hashPass = htmlspecialchars(strip_tags($this->hashPass));
-        $this->token= md5($this->name . $this->password);
+        $this->token= md5($this->name .$this->email. $this->password);
         $this->token = htmlspecialchars(strip_tags($this->token));
         // Bind values
         $stmt->bindParam(':name', $this->name);

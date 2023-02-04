@@ -42,18 +42,22 @@ if ($num > 0) {
         $_SESSION['name'] = $user_item['name'];
         $_SESSION['email'] = $user_item['email'];
         $_SESSION['token'] = $user_item['token'];
-        if ($_SESSION['id']&&$_SESSION['name']&&$_SESSION['email']&&$_SESSION['token']) {
-            echo json_encode(["message" =>"Valide token"]);
-        }else{
-            echo json_encode(["message" =>"no Valide token"]);
-        }
-
+        
         // Push to "data"
         array_push($users_arr, $user_item);
     }
-
+    
+    if ($_SESSION['id']&&$_SESSION['name']&&$_SESSION['email']&&$_SESSION['token']) {
+        echo json_encode(
+            array('message' => 'Valide token',
+            'resulte' => $users_arr
+            )
+        );
+    }else{
+        echo json_encode(["message" =>"no Valide token"]);
+    }
     // Turn to JSON & output
-    echo json_encode($users_arr);
+    // echo json_encode($users_arr);
 } else {
     // No users
     echo json_encode(

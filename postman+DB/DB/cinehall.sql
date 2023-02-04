@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : ven. 03 fév. 2023 à 19:21
+-- Généré le : sam. 04 fév. 2023 à 01:04
 -- Version du serveur : 10.4.27-MariaDB
--- Version de PHP : 7.4.33
+-- Version de PHP : 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -278,13 +278,6 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `user`
---
-
-INSERT INTO `user` (`id`, `name`, `email`, `password`, `token`) VALUES
-(4, 'marouane', 'email@email.email', '$2y$10$6T3oG2NA6N6jbA0.kXZgGuEKahyRqkRxBB7zh5SFmTzwprB5zqnn2', '9636fb98ef6c20fa604cbc6dfccbcf42');
-
---
 -- Index pour les tables déchargées
 --
 
@@ -326,7 +319,8 @@ ALTER TABLE `salle_3`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `token` (`token`);
+  ADD UNIQUE KEY `token` (`token`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -342,7 +336,7 @@ ALTER TABLE `films`
 -- AUTO_INCREMENT pour la table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `salle_1`
@@ -366,7 +360,7 @@ ALTER TABLE `salle_3`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- Contraintes pour les tables déchargées
