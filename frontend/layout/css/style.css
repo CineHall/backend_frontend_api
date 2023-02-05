@@ -26,3 +26,26 @@
     background-color: red;
     color: white;
 }
+#token{
+    margin-top : 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+#token input{
+    width: 20rem;
+    border: 1px solid;
+    border-radius: 0.3rem;
+}
+#token button{
+    width: 15rem;
+    background-color: #ff000091;
+    border-radius: 1rem;
+    color: black;
+}
+
+#token button:hover {
+    background-color: red;
+    color: white;
+}
