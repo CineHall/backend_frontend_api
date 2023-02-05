@@ -32,7 +32,7 @@ if ($num > 0) {
             'name' => $name,
             'time' => $time,
             'place_price' => $place_price,
-            'hall_number' => $hall_number,
+            'hall_name' => $hall_name,
             'image' => $image
         );
 

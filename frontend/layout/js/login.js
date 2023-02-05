@@ -17,7 +17,7 @@ formEl.addEventListener('submit', event => {
             document.querySelector('#deuxClick').click()   
             value = test()
             if (value == 'Valide token') {
-                location.replace("../reservation/home.php");
+                location.replace("../movies/movies.php");
             } else {
                 location.replace("./login.php");
             }

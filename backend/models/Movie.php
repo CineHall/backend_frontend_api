@@ -9,6 +9,7 @@ class Movie
     public $name;
     public $time;
     public $place_price;
+    public $hall_name;
     public $image;
 
     public function __construct($db) {

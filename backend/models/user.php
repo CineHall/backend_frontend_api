@@ -1,5 +1,4 @@
 <?php
-// require_once '../libraries/DB.php';
 
 class user
 {
