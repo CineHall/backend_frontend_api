@@ -2,6 +2,9 @@ const formEl = document.querySelector('.form');
 formEl.addEventListener('submit',event=>{
     event.preventDefault();
     const formData = new FormData(formEl);
+    formData.append('name',formEl.elements.name.value)
+    formData.append('email',formEl.elements.email.value)
+    formData.append('password',formEl.elements.password.value)
     const data = Object.fromEntries(formData);
     const token = document.querySelector('#token');
     
@@ -11,7 +14,7 @@ formEl.addEventListener('submit',event=>{
             'Content-Type' : 'application/json'
         },
         body:JSON.stringify(data)
-    }).then(res => res.json())
+    }).then(res => {res.json()})
     .then(data => token.innerHTML= '<input type="text" readonly id="tokenvalue" value="'+data.resulte + '"><button onclick="CopyToken()">Copy Your Token For Login</button>')
 });
 function CopyToken() {

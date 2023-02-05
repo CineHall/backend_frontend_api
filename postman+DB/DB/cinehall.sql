@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : sam. 04 fév. 2023 à 01:04
+-- Généré le : dim. 05 fév. 2023 à 13:46
 -- Version du serveur : 10.4.27-MariaDB
--- Version de PHP : 8.2.0
+-- Version de PHP : 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,17 +32,18 @@ CREATE TABLE `films` (
   `name` varchar(200) NOT NULL,
   `time` varchar(200) NOT NULL,
   `place_price` float NOT NULL,
-  `hall_number` int(11) NOT NULL
+  `hall_number` int(11) NOT NULL,
+  `image` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `films`
 --
 
-INSERT INTO `films` (`id`, `name`, `time`, `place_price`, `hall_number`) VALUES
-(1, 'john_Wike', '2 hours', 60, 1),
-(2, 'elCamino', '1h30min', 40, 2),
-(3, 'Squed Game', '3h', 100, 3);
+INSERT INTO `films` (`id`, `name`, `time`, `place_price`, `hall_number`, `image`) VALUES
+(1, 'john_Wike', '2 hours', 60, 1, 'http://localhost/backend_frontend_api/backend/img/john_Wike.jpg'),
+(2, 'elCamino', '1h30min', 40, 2, 'http://localhost/backend_frontend_api/backend/img/elcamino.jpg'),
+(3, 'Squed Game', '3h', 100, 3, 'http://localhost/backend_frontend_api/backend/img/squid_game.jpg');
 
 -- --------------------------------------------------------
 
@@ -319,8 +320,7 @@ ALTER TABLE `salle_3`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `token` (`token`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD UNIQUE KEY `token` (`token`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -336,7 +336,7 @@ ALTER TABLE `films`
 -- AUTO_INCREMENT pour la table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT pour la table `salle_1`
@@ -360,7 +360,7 @@ ALTER TABLE `salle_3`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- Contraintes pour les tables déchargées
