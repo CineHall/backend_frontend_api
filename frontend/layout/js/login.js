@@ -12,19 +12,11 @@ formEl.addEventListener('submit', event => {
         },
         body: JSON.stringify(data)
     }).then(res => res.json())
-        .then(data => token.innerHTML = '<input type="hidden" readonly id="tokenvalue" value="' + data.message + '">')
-        for (let i = 0; i < 2; i++) {
-            document.querySelector('#deuxClick').click()   
-            value = test()
-            if (value == 'Valide token') {
+        .then(data =>{
+            if (data.message == 'Valide token') {
                 location.replace("../movies/movies.php");
             } else {
                 location.replace("./login.php");
             }
-    }
+        })
 });
-function test() {
-    var input = document.querySelector('#tokenvalue')
-    var value = input.value
-    return value
-}
