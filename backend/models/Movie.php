@@ -25,5 +25,22 @@ class Movie
   
         return $stmt;
     }
+    public function getmovie()
+    {
+        $query = 'SELECT * FROM films WHERE id = :id';
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindparam(":id",$this->id);
+      
+        // Execute query
+        $stmt->execute();
+
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $this->name = $row['name'];
+        $this->time = $row['time'];
+        $this->place_price = $row['place_price'];
+        $this->hall_name = $row['hall_name'];
+        $this->image = $row['image'];
+    }
 }
 ?>
