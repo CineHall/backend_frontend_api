@@ -15,18 +15,21 @@ fetch("http://localhost/backend_frontend_api/backend/controllers/movies/getMovie
         if (data.hall_name == 'salle_1') {
             hall_name = 'salle 1'
         }
-        if(data.hall_name == 'salle_2'){
+        if (data.hall_name == 'salle_2') {
             hall_name = 'salle 2'
         }
-        if(data.hall_name == 'salle_3'){
+        if (data.hall_name == 'salle_3') {
             hall_name = 'salle 3'
         }
         var card = '<img src = "' + data.image + '" alt = "image pour ' + data.name + '">'
         card += '<div class="span">'
-        card += '<span>' + data.name + '</span>'
-        card += '<span>' + data.time + '</span>'
-        card += '<span>' + data.place_price + '</span>'
-        card += '<span>' + hall_name + '</span>'
+        card += '<span>Nom De Film : ' + data.name + '</span>'
+        card += '<span>Duree De Film : ' + data.time + '</span>'
+        card += '<span>Prix De Tickette : ' + data.place_price + ' DH</span>'
+        card += '<span>Nom De Salle : ' + hall_name + '</span>'
+        card += '<div>'
+        card += '<a href="#">reserve</a>'
+        card += '</div >'
         card += '</div>'
 
         var movie = document.createElement('div');
