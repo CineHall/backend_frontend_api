@@ -9,6 +9,7 @@ class Movie
     public $name;
     public $time;
     public $place_price;
+    public $image;
 
     public function __construct($db) {
         $this->conn = $db;
