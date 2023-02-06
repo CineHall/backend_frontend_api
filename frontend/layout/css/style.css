@@ -8,7 +8,7 @@
 
 /* End All */
 /* Start Form */
-.form {
+.form,.form #inputJS div {
     display: flex;
     flex-direction: column;
     align-items: center;

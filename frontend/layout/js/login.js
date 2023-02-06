@@ -12,8 +12,11 @@ formEl.addEventListener('submit', event => {
         },
         body: JSON.stringify(data)
     }).then(res => res.json())
-        .then(data =>{
+        .then(data => {
             if (data.message == 'Valide token') {
+                // Stocker les results
+                localStorage.setItem("id",data.resulte[0]['id']);
+
                 location.replace("../movies/movies.php");
             } else {
                 location.replace("./login.php");
