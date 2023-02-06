@@ -133,7 +133,7 @@
     flex-direction: column;
     gap: .5rem;
     padding: 0.5rem 1rem;
-    width: 27rem;
+    width: 100%;
     background-color: #e7e7e7;
     margin-top: -.3rem;
     border-radius: 0 0 1rem 1rem;
