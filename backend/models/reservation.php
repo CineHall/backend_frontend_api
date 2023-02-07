@@ -10,6 +10,13 @@ class reservation
     public $reservation_date;
     public $price;
 
+
+    // films column
+    public $name;
+    public $time;
+    public $image;
+
+
     public $conn;
 
 
@@ -58,7 +65,7 @@ class reservation
         $place_id = $place_info['id_place'];
         $reserve = 1;
 
-        $query2 = 'UPDATE ' .  $this->salle_name . ' SET reserve = :reserve WHERE id_place = :id_place';
+        $query2 = 'UPDATE ' . $this->salle_name . ' SET reserve = :reserve WHERE id_place = :id_place';
 
         $stmt2 = $this->conn->prepare($query2);
         $stmt2->bindParam(':reserve', $reserve);
@@ -85,12 +92,12 @@ class reservation
         // put info name hall and number place in varibales
         $this->salle_name = $reservation_info['salle_name'];
         $this->place_numero = $reservation_info['place_numero'];
-        
+
         // delete reservation by id
         $query2 = 'DELETE  FROM reservation WHERE id = ' . $this->id;
         $stmt2 = $this->conn->prepare($query2);
         $stmt2->execute();
-        
+
         // select row from $salle_name where place number = $place_numero
         $query3 = 'SELECT * FROM ' . $this->salle_name . ' WHERE place_numero = :place_numero ';
         $stmt3 = $this->conn->prepare($query3);
@@ -100,9 +107,9 @@ class reservation
         $place_info = $stmt3->fetch();
         // put info id_place in varibale
         $place_id = $place_info['id_place'];
-        
-        $query4 = 'UPDATE ' .  $this->salle_name . ' SET reserve = 0 WHERE id_place = :id_place';
-        
+
+        $query4 = 'UPDATE ' . $this->salle_name . ' SET reserve = 0 WHERE id_place = :id_place';
+
         $stmt4 = $this->conn->prepare($query4);
         $stmt4->bindParam(':id_place', $place_id);
         if ($stmt4->execute()) {
@@ -117,9 +124,29 @@ class reservation
     public function get_reservation()
     {
         $query = 'SELECT * FROM reservation';
-        
+
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt;
+    }
+    public function getReservationIdUser()
+    {
+        $query = 'SELECT * FROM reservation re, films fs WHERE re.price = fs.place_price and re.salle_name = fs.hall_name And re.id_user = :id';
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":id",$this->id_user);
+      
+        // Execute query
+        $stmt->execute();
+
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $this->id = $row['id'];
+        $this->salle_name = $row['salle_name'];
+        $this->place_numero = $row['place_numero'];
+        $this->reservation_date = $row['reservation_date'];
+        $this->price = $row['price'];
+        $this->name = $row['name'];
+        $this->time = $row['time'];
+        $this->image = $row['image'];
     }
 }

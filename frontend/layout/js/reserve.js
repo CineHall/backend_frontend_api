@@ -2,7 +2,10 @@ const id_user = localStorage.getItem("id");
 const hallName = localStorage.getItem("hallName");
 const pricePlace = localStorage.getItem("pricePlace");
 
-const divInput = document.querySelector('#inputJS');
+if (!id_user || id_user == 'null' || id_user == 'undefined') {
+  location.replace("../users/login.php");
+} else {
+  const divInput = document.querySelector('#inputJS');
 
 let formInput = `
   <input type="hidden" value="${id_user}" readonly name="id_user">
@@ -99,3 +102,5 @@ formEl.addEventListener('submit', event => {
       }
     });
 });
+
+}

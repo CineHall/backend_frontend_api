@@ -5,7 +5,26 @@
     font-family: sans-serif;
     border: none;
 }
+button {
+    width: 5rem;
+    background-color: #ff000091;
+    border-radius: 1rem !important;
+    color: black;
+}
 
+button:hover {
+    background-color: red;
+    color: white;
+}
+.btn_login_sinUp{
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+.btn_login_sinUp a button{
+    width: 100%;
+    padding: 0.5rem 1rem;
+}
 /* End All */
 /* Start Form */
 .form,.form #inputJS div {
@@ -158,7 +177,11 @@
 
 /* Start Reserve Page */
 
-#inputJS div .radioInput{display: grid;grid-template-columns: repeat(5, 1fr);grid-gap: 10px;} 
+#inputJS div .radioInput{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 10px;
+} 
 #inputJS div .radioInput .radioSeats {
     display: flex;
     flex-direction: row;
