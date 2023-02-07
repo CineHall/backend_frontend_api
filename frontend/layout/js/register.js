@@ -15,27 +15,21 @@ formEl.addEventListener('submit', event => {
         .then(data => token.innerHTML = '<input type="text" readonly id="tokenvalue" value="' + data.resulte + '"><button onclick="CopyToken()">Copy Your Token For Login</button>')
 });
 function CopyToken() {
-    // Get the text field
-    var copyText = document.getElementById('tokenvalue');
+    const input = document.querySelector("#tokenvalue");
 
-    // Check if the method is supported
-    if (navigator.clipboard) {
-        // Select the text field
-        copyText.select();
+    // Sélectionnez la valeur du champ de saisie
+    const inputValue = input.value;
 
-        // Copy the text inside the text field
-        navigator.clipboard.writeText(copyText.value)
-            .then(() => {
-                // Alert the copied text
-                alert("Copied the text: " + copyText.value);
-            })
-            .catch(err => {
-                console.error('Failed to copy text: ', err);
-                alert('Failed to copy text: ' + err);
-            });
-    } else {
-        alert('Clipboard API is not supported in this browser');
-    }
-
+    // Créez un champ de saisie caché pour copier la valeur
+    const tempInput = document.createElement("input");
+    tempInput.style.position = "fixed";
+    tempInput.style.opacity = 0;
+    tempInput.value = inputValue;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+    console.log("Copied to clipboard");
+    alert("Copied the text: " + inputValue);
     location.replace("./login.php");
 }

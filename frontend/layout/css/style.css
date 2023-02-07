@@ -155,3 +155,30 @@
     background-color: red;
 }
 /* End Movie Page */
+
+/* Start Reserve Page */
+
+#inputJS div .radioInput{display: grid;grid-template-columns: repeat(5, 1fr);grid-gap: 10px;} 
+#inputJS div .radioInput .radioSeats {
+    display: flex;
+    flex-direction: row;
+}
+#inputJS div .radioInput .Full {
+margin-right: -8px;
+margin-top: 13px;
+}
+#inputJS div .radioInput .radioSeats input {
+    width: 1rem;
+}
+#inputJS div .radioInput .radioSeats label .seats{
+    width: 1.5rem;
+} 
+#inputJS div .radioInput .radioSeats label .full_place{
+    width: 2rem;
+}
+
+.full_place {
+    cursor: no-drop;
+} 
+
+/* End Reserve Page */

@@ -21,4 +21,3 @@
       return $this->conn;
     }
   }
-  session_start();
