@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mar. 07 fév. 2023 à 21:09
+-- Généré le : mer. 08 fév. 2023 à 10:55
 -- Version du serveur : 10.4.27-MariaDB
--- Version de PHP : 8.2.0
+-- Version de PHP : 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -41,8 +41,8 @@ CREATE TABLE `films` (
 --
 
 INSERT INTO `films` (`id`, `name`, `time`, `place_price`, `hall_name`, `image`) VALUES
-(1, 'Hdidane', '2 hours', 60, 'salle_1', 'http://localhost/backend_frontend_api/backend/img/Hdidane.jpg'),
-(2, 'Sbah Morakoch', '1h30min', 40, 'salle_2', 'http://localhost/backend_frontend_api/backend/img/Sbah_Morakoch.jpg'),
+(1, 'Sbah Morakoch', '2 hours', 40, 'salle_1', 'http://localhost/backend_frontend_api/backend/img/Sbah_Morakoch.jpg'),
+(2, 'Hdidane', '1h30min', 60, 'salle_2', 'http://localhost/backend_frontend_api/backend/img/Hdidane.jpg'),
 (3, 'Squed Game', '3h', 100, 'salle_3', 'http://localhost/backend_frontend_api/backend/img/squid_game.jpg');
 
 -- --------------------------------------------------------
@@ -59,6 +59,16 @@ CREATE TABLE `reservation` (
   `reservation_date` date NOT NULL DEFAULT current_timestamp(),
   `price` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `reservation`
+--
+
+INSERT INTO `reservation` (`id`, `id_user`, `salle_name`, `place_numero`, `reservation_date`, `price`) VALUES
+(19, 56, 'salle_2', 12, '2023-02-16', 60),
+(20, 56, 'salle_2', 49, '2023-02-24', 60),
+(21, 56, 'salle_2', 50, '0000-00-00', 60),
+(22, 56, 'salle_2', 44, '0000-00-00', 40);
 
 -- --------------------------------------------------------
 
@@ -156,7 +166,7 @@ INSERT INTO `salle_2` (`id_place`, `place_numero`, `reserve`) VALUES
 (9, 9, 0),
 (10, 10, 0),
 (11, 11, 0),
-(12, 12, 0),
+(12, 12, 1),
 (13, 13, 0),
 (14, 14, 0),
 (15, 15, 0),
@@ -188,13 +198,13 @@ INSERT INTO `salle_2` (`id_place`, `place_numero`, `reserve`) VALUES
 (41, 41, 0),
 (42, 42, 0),
 (43, 43, 0),
-(44, 44, 0),
+(44, 44, 1),
 (45, 45, 0),
 (46, 46, 0),
 (47, 47, 0),
 (48, 48, 0),
-(49, 49, 0),
-(50, 50, 0);
+(49, 49, 1),
+(50, 50, 1);
 
 -- --------------------------------------------------------
 
@@ -283,12 +293,18 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `email`, `password`, `token`) VALUES
-(32, 'marohtfyghgujuane', 'emaifdhgjkhgjfjkgl@email.email', '$2y$10$ukOrH58v1jZ4xohRfe8S6.K0gc6ojvoJ9jaRSSTElgCBvJek93jUK', '3d4ff3a3f74b208f2d21d43c4d96f73e'),
-(33, 'trf', 'UANEMARO216@GMAIL.COM', '$2y$10$xLIlQ8VCrNlGsaW2o0LUJug5AP3fvkDXaGpQmxQQpK5zDZ7jAksyW', 'cbe1317b40e1fc83b2fed7c2bd1e91fc'),
-(34, 'gfdd', 'UAxffNEMARO216@GMAIL.COM', '$2y$10$593T2xhvrC6v7s1s.Pm6Zed.iv26rxvUe6Mz7oZ6P8..N9YjyvA7u', '04b83f7bbe48299d24736cea104ad29b'),
-(35, 'tydht', 'dhd@hgcgh.jf', '$2y$10$cypnJd5pCxybWFjFIh78ieQ8wq0.W6OF0OWRtnvN3bzB6UGxRcm5S', 'dc2fdfa33beaf3cd5e3bbafb244efbef'),
-(36, 'Marouane ', 'uanemaro216@gmail.com', '$2y$10$C4BZyZ.yN.4BLJUvFNDNfOn4AKsmDvAmBvircFsFHrEFaFkRhg1yS', 'a6080a9510c767bb19943b9c34f7fb82'),
-(37, 'Marouane ', 'UANEMARO@GMAIL.COM', '$2y$10$jS0sw0teZkpXeUBDwOBD7un69qUAmIQSv/5Vi1e9SFA2xEXs5N4c2', '34848154a9773ddf642f56d8f13a113d');
+(45, 'marouane', 'uanemaro216@gmail.com', '$2y$10$vTiHzQwmzkU.LbBrddUyT.N16UINP4aDVFYKsnp3Zu8Xt3VdIPvoi', '5f2539fe9f1cc56b938c509cec3e11ad'),
+(46, 'hamza', 'hamza@gmail.com', '$2y$10$8WplsIAfrmTA0Ig9exLJRemGj4YtAdP1CHvpkOB93yn9TSg2s1nO.', 'bb2d07489bce0112223132ab14d66815'),
+(47, 'ayoub', 'ayoub@gmail.com', '$2y$10$AumJnyIw9dZzKsA/5jPNK.vweO1kaONa7qZWNrlDizAg.9EecTtTi', '60659d29690bb24536e8c6a96f182740'),
+(48, 'zineb', 'zineb@gmail.com', '$2y$10$NFQOgs6ek0Ju0dlISqsSP.ZA.3/g96qj5Eq6ODU8fTTd5ZGFYPU9q', '56c4e855e679c7723446c916d9d0fcc2'),
+(49, 'mohammed', 'mohammed@gmail.com', '$2y$10$J1tdkqNiXMGlb9HeIQ7ZXenH2LvJWp.nL.a5yHVn3ooJ7lT4tC6Yu', '89b212c3ddaaeca44521acdef63e12cd'),
+(50, 'mohtan', 'mohtan@gmail.com', '$2y$10$VqCHlxJMYekabjlqYT9v8OLRSOEYq8wmNPnJTSV0e37UZjmGmewGq', '4321d213c9c975462db3691c77aed2bf'),
+(51, 'mohe', 'mohe@gmail.com', '$2y$10$z4l0s5lxW3LlRyufkCsr..0Op8Z.Z6Hq3b5RF6mFYJYDuytfaRd/m', 'c3e6e588db58f49822741d686294101b'),
+(52, 'miloud', 'miloud@gmail.com', '$2y$10$/ERMxJ1VkB6h/unFoSwwTOqrNyT1azWEecLYoaJKWfKEbgJmaxVne', '81fb1fb43dede5f4e1649e4f729ff5c3'),
+(53, 'ikram', 'ikram@gmail.com', '$2y$10$mrmRFaSlVbNwkvswFnnQB.JZDxyetbflmYgFBqx.R6eT8NBZE6Kv2', '53e725af96e90627380fa8c6b21f26f4'),
+(54, 'pc', 'pc@gmail.com', '$2y$10$HVL/pL6y28McAiwuTT6KIOaGSmVuCYC483RmcLg10G3eXzP6/A/2e', 'd4d8a10b8ed89f71d490c140348d535a'),
+(55, 'sidati', 'sidati@gmail.com', '$2y$10$AdslQVMQgGxZAhYlEd2zDuageA0cPp2aNlN3R0H585rx3Uz9NZd3O', 'b501e7d5a7fa3de533fbfa1acaf9c4c1'),
+(56, 'me', 'me@gmail.com', '$2y$10$SO0xEAx6XNFXY0BUCimEMeBJIdNN0T9iSkLK.cPeGTAo5ByM63hTq', '72f71385170f840e36611ece7ab88730');
 
 --
 -- Index pour les tables déchargées
@@ -348,7 +364,7 @@ ALTER TABLE `films`
 -- AUTO_INCREMENT pour la table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT pour la table `salle_1`
@@ -372,7 +388,7 @@ ALTER TABLE `salle_3`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- Contraintes pour les tables déchargées

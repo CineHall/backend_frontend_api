@@ -16,16 +16,42 @@ $reservation = new reservation($connect);
 // Get ID
 $reservation->id_user = isset($_GET['id']) ? $_GET['id'] : die();
 
-$reservation->getReservationIdUser();
+$result = $reservation->getReservationIdUser();
 
-$reservation_arr = array(
-    'id' => $reservation->id,
-    'name' => $reservation->name,
-    'time' => $reservation->time,
-    'salle_name' => $reservation->salle_name,
-    'place_numero' => $reservation->place_numero,
-    'reservation_date' => $reservation->reservation_date,
-    'price' => $reservation->price,
-    'image' => $reservation->image
-);
-print_r(json_encode($reservation_arr));
+$num = $result->rowCount();
+
+if ($num > 0) {
+    // movie array
+    $reservations_arr = array();
+    // $movies_arr['data'] = array();
+
+    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+        extract($row);
+
+        $reservation_item = array(
+            'id' => $id,
+            'name' => $name,
+            'time' => $time,
+            'salle_name' => $salle_name,
+            'place_numero' => $place_numero,
+            'reservation_date' => $reservation_date,
+            'price' => $price,
+            'image' => $image
+        );
+
+
+
+        // Push to "data"
+        array_push($reservations_arr, $reservation_item);
+    }
+
+    // Turn to JSON & output
+    echo json_encode($reservations_arr);
+} else {
+    // No movies
+    echo json_encode(
+        array('message' => 'No reservations Found')
+    );
+}
+
+?>

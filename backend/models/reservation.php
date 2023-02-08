@@ -137,16 +137,7 @@ class reservation
       
         // Execute query
         $stmt->execute();
+        return $stmt;
 
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        $this->id = $row['id'];
-        $this->salle_name = $row['salle_name'];
-        $this->place_numero = $row['place_numero'];
-        $this->reservation_date = $row['reservation_date'];
-        $this->price = $row['price'];
-        $this->name = $row['name'];
-        $this->time = $row['time'];
-        $this->image = $row['image'];
     }
 }

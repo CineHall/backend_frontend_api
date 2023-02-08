@@ -1,39 +1,42 @@
 const id_user = localStorage.getItem("id");
-var reservationUser = document.querySelector('#reservationUser');
-fetch(`http:localhost/backend_frontend_api/backend/controllers/reservation/get_reservation.php?id=${id_user}`, {
-    method: 'GET',
+console.log(id_user);
+stop
+var reservationUser = document.querySelector("#reservationUser");
+fetch(`http:localhost/backend_frontend_api/backend/controllers/reservation/get_reservation.php?id=${id_user}`,
+  {
+    method: "GET",
     headers: {
-        'Content-Type': 'application/json'
-    }
-})
-    .then(res => res.json())
-    .then(data => {
-        console.log(data)
-        // formInput += `
-    //  <div class="radioInput">`
-        for (let i = 0; i < data.length; i++) {
-            formInput += `
-                <div class = "radioSeats">
-                    <input type="radio" id="Choice-${i}" name="place_numero" value="${data[i].place_numero}">
-                    <label for="Choice-${i}">
-                        <img class = "seats" src="http:localhost/backend_frontend_api/backend/img/seats.png" alt="place">
-                        <span>${data[i].place_numero}</span>
-                    </label>
-                </div>
-                `;
+      "Content-Type": "application/json",
+    },
+  }
+)
+  .then((res) => res.json())
+  .then((data) => {
+    console.log(data);
+    for (let i = 0; i < data.length; i++) {
+        console.log(data[i]);
+        var salle_name
+        if (data[i].salle_name == 'salle_1') {
+            salle_name = 'salle 1'
         }
-        // formInput += `</div>`
-        // let inputs = document.createElement('div');
-        // inputs.innerHTML = formInput;
-        // divInput.append(inputs);
-    });
-    /* {
-"id": 2,
-"name": "Sbah Morakoch",
-"time": "1h30min",
-"salle_name": "salle_2",
-"place_numero": 50,
-"reservation_date": "0000-00-00",
-"price": 40,
-"image": "http://localhost/backend_frontend_api/backend/img/Sbah_Morakoch.jpg"
-} */
+        if (data[i].salle_name == 'salle_2') {
+            salle_name = 'salle 2'
+        }
+        if (data[i].salle_name == 'salle_3') {
+            salle_name = 'salle 3'
+        }
+        var reservation = '<div>'
+        var reservation = '<img src = "'+ data[i].image +'" alt = "image pour '+ data[i].name +'">'
+        reservation += '<span>salle name : ' + salle_name + '</span>'
+        reservation += '<span>place numero : ' + place_numero + '</span>'
+        reservation += '<span>reservation date : ' + data[i].reservation_date + '</span>'
+        reservation += '<span>price : ' + data[i].price + 'DH</span>'
+        reservation += '<a href="./deleteReservation.php?id='+ data[i].id +'"><button>Annuler</button></a>' 
+        reservation += '</div>'
+
+        var reservationClient = document.createElement('div');
+        reservationClient.innerHTML = reservation;
+    
+        reservationUser.append(movie);
+    }
+});
