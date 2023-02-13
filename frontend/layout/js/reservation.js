@@ -1,7 +1,10 @@
 const id_user = localStorage.getItem("id");
 var reservationUser = document.querySelector("#reservationUser");
 console.log(reservationUser);
+<<<<<<< HEAD
 stop
+=======
+>>>>>>> 76e05b2f8ade5a821c6cadb0887055f4530e8f21
 fetch(`http:localhost/backend_frontend_api/backend/controllers/reservation/get_reservation.php?id=${id_user}`,
   {
     method: "GET",
