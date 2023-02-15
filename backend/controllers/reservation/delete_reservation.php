@@ -14,10 +14,9 @@ $db = $database->connect();
 // Instantiate blog reservation object
 $reservation = new reservation($db);
 
-  // Get raw posted data
-  $data = json_decode(file_get_contents("php://input"));
+$id_reservation = $_GET['id'];
 
-  $reservation->id = $data->id;
+  $reservation->id = $id_reservation;
     // Create post
     if($reservation->delete_reservation()) {
         echo json_encode(

@@ -27,11 +27,11 @@ class reservation
 
     public function add_reservation()
     {
-        $query = 'INSERT INTO reservation (id, id_user, salle_name,place_numero,reservation_date,price)VALUES (:id, :id_user, :salle_name,:place_numero,:reservation_date,:price)';
+        $query = 'INSERT INTO reservation (id, id_user, salle_name,place_numero,reservation_date,price)VALUES (:id_reservation, :id_user, :salle_name,:place_numero,:reservation_date,:price)';
         // Prepare statement
         $stmt = $this->conn->prepare($query);
         // Bind values
-        $stmt->bindParam(':id', $this->id);
+        $stmt->bindParam(':id_reservation', $this->id);
         $stmt->bindParam(':id_user', $this->id_user);
         $stmt->bindParam(':salle_name', $this->salle_name);
         $stmt->bindParam(':place_numero', $this->place_numero);
@@ -84,7 +84,8 @@ class reservation
     public function delete_reservation()
     {
         // select reservation by id
-        $query = 'SELECT * FROM reservation WHERE id = ' . $this->id;
+        $query = 'SELECT * FROM reservation WHERE id_reservation = ' . $this->id;
+        // var_dump($query);die;
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         // fetch info for reservation
@@ -94,7 +95,7 @@ class reservation
         $this->place_numero = $reservation_info['place_numero'];
 
         // delete reservation by id
-        $query2 = 'DELETE  FROM reservation WHERE id = ' . $this->id;
+        $query2 = 'DELETE  FROM reservation WHERE id_reservation = ' . $this->id;
         $stmt2 = $this->conn->prepare($query2);
         $stmt2->execute();
 

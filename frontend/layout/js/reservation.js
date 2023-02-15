@@ -1,11 +1,6 @@
 const id_user = localStorage.getItem("id");
 var reservationUser = document.querySelector("#reservationUser");
-console.log(reservationUser);
-<<<<<<< HEAD
-stop
-=======
->>>>>>> 76e05b2f8ade5a821c6cadb0887055f4530e8f21
-fetch(`http:localhost/backend_frontend_api/backend/controllers/reservation/get_reservation.php?id=${id_user}`,
+fetch(`http://localhost/backend_frontend_api/backend/controllers/reservation/get_reservation.php?id=${id_user}`,
   {
     method: "GET",
     headers: {
@@ -15,9 +10,9 @@ fetch(`http:localhost/backend_frontend_api/backend/controllers/reservation/get_r
 )
   .then((res) => res.json())
   .then((data) => {
-    console.log(data);
+    // console.log(data);
     for (let i = 0; i < data.length; i++) {
-        console.log(data[i]);
+        // console.log(data[i]);
         var salle_name
         if (data[i].salle_name == 'salle_1') {
             salle_name = 'salle 1'
@@ -28,18 +23,20 @@ fetch(`http:localhost/backend_frontend_api/backend/controllers/reservation/get_r
         if (data[i].salle_name == 'salle_3') {
             salle_name = 'salle 3'
         }
-        var reservation = '<div>'
+        console.log(data[i]);
         var reservation = '<img src = "'+ data[i].image +'" alt = "image pour '+ data[i].name +'">'
+        reservation += '<div class="info_movie_reseravtion">'
+        reservation += '<h1>movie name : ' + data[i].name  + '</h1>'
         reservation += '<span>salle name : ' + salle_name + '</span>'
-        reservation += '<span>place numero : ' + place_numero + '</span>'
+        reservation += '<span>place numero : ' + data[i].place_numero + '</span>'
         reservation += '<span>reservation date : ' + data[i].reservation_date + '</span>'
         reservation += '<span>price : ' + data[i].price + 'DH</span>'
-        reservation += '<a href="./deleteReservation.php?id='+ data[i].id +'"><button>Annuler</button></a>' 
         reservation += '</div>'
+        reservation += '<a href="./deleteReservation.php?id='+ data[i].id +'"><button>Annuler</button></a>' 
 
         var reservationClient = document.createElement('div');
         reservationClient.innerHTML = reservation;
     
-        reservationUser.append(movie);
+        reservationUser.append(reservationClient);
     }
 });

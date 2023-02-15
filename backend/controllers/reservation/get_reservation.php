@@ -29,7 +29,7 @@ if ($num > 0) {
         extract($row);
 
         $reservation_item = array(
-            'id' => $id,
+            'id' => $id_reservation,
             'name' => $name,
             'time' => $time,
             'salle_name' => $salle_name,
@@ -44,7 +44,6 @@ if ($num > 0) {
         // Push to "data"
         array_push($reservations_arr, $reservation_item);
     }
-
     // Turn to JSON & output
     echo json_encode($reservations_arr);
 } else {

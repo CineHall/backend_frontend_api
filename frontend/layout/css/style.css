@@ -208,25 +208,36 @@ margin-top: 13px;
 
 /* Start Reservations Page */
 
-#reservationUser div{
+#reservationUser{
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
 }
-#reservationUser div div{
+#reservationUser div{
+    display: flex;
+    flex-direction: row;
     border: 1px solid;
     border-radius: 1rem;
     padding: 1rem;
+    align-items: center;
+    gap: 1rem;
 }
-#reservationUser div div h1{
+#reservationUser div h1{
     background-color: black;
     color: white;
-    padding: .5rem 1rem;
+    padding: 0.5rem 1rem;
     border-radius: 2rem;
+    font-size: 1rem;
+    width: auto;
 }
-#reservationUser div div img{
-    width: 30rem;
+#reservationUser div img{
+    width: 33rem;
     border-radius: 1rem;
+}
+.info_movie_reseravtion {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 26rem;
 }
 /* End Reservations Page */
