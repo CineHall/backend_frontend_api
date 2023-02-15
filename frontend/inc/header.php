@@ -17,48 +17,36 @@
 
 <body id="body-pd">
     <header class="header" id="header">
-        <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
-        <div class="header_img"> <img src="http://localhost/backend_frontend_api/backend/img/logo.png" alt=""> </div>
+        <div class="header_toggle"> 
+            <i class='bx bx-menu' id="header-toggle"></i> 
+        </div>
+        <div class="header_img"> 
+            <img  src="http://localhost/backend_frontend_api/backend/img/logo.png" alt=""> 
+        </div>
     </header>
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
             <div> 
-                <a href="#" class="nav_logo"> 
-                    <i class='bx bx-layer nav_logo-icon'></i> 
-                    <span class="nav_logo-name">BBBootstrap</span> 
+                <a href="../movies/movies.php" class="nav_logo"> 
+                    <img style="width: 2rem;" src="http://localhost/backend_frontend_api/backend/img/CineHall.png" alt=""> 
+                    <span class="nav_logo-name">CineHall</span> 
                 </a>
                 <div class="nav_list"> 
-                    <a href="#" class="nav_link active"> 
+                    <a href="../movies/movies.php" class="nav_link active"> 
                         <i class='bx bx-grid-alt nav_icon'></i> 
-                        <span class="nav_name">Dashboard</span> 
+                        <span class="nav_name">Movies</span> 
                     </a> 
-                    <a href="#" class="nav_link"> 
+                    <a href="../reservation/reservation.php" class="nav_link"> 
                         <i class='bx bx-user nav_icon'></i> 
-                        <span class="nav_name">Users</span> 
-                    </a> 
-                    <a href="#" class="nav_link"> 
-                        <i class='bx bx-message-square-detail nav_icon'></i> 
-                        <span class="nav_name">Messages</span> 
-                    </a> 
-                    <a href="#" class="nav_link"> 
-                        <i class='bx bx-bookmark nav_icon'></i> 
-                        <span class="nav_name">Bookmark</span> 
-                    </a> 
-                    <a href="#" class="nav_link"> 
-                        <i class='bx bx-folder nav_icon'></i> 
-                        <span class="nav_name">Files</span> 
-                    </a> 
-                    <a href="#" class="nav_link"> 
-                        <i class='bx bx-bar-chart-alt-2 nav_icon'></i> 
-                        <span class="nav_name">Stats</span> 
+                        <span class="nav_name">Vos Reservation</span> 
                     </a> 
                 </div>
             </div> 
-            <a href="#" class="nav_link"> 
-                <i class='bx bx-log-out nav_icon'></i> 
-                <span class="nav_name">SignOut</span> 
+            <a id="urlLogInOut" class="nav_link"> 
+                <i id='iLogInOut'></i> <!-- bx bx-log-out | in nav_icon-->
+                <span id="spanLogInOut" class="nav_name"></span> 
             </a>
         </nav>
     </div>
     <!--Container Main start-->
-    <div>
+    <div style="padding-top: 5rem;">
