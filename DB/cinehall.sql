@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 08 fév. 2023 à 10:55
+-- Généré le : jeu. 16 fév. 2023 à 11:26
 -- Version du serveur : 10.4.27-MariaDB
--- Version de PHP : 7.4.33
+-- Version de PHP : 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -52,23 +52,13 @@ INSERT INTO `films` (`id`, `name`, `time`, `place_price`, `hall_name`, `image`) 
 --
 
 CREATE TABLE `reservation` (
-  `id` int(11) NOT NULL,
+  `id_reservation` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `salle_name` varchar(250) NOT NULL,
   `place_numero` int(11) NOT NULL,
   `reservation_date` date NOT NULL DEFAULT current_timestamp(),
   `price` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Déchargement des données de la table `reservation`
---
-
-INSERT INTO `reservation` (`id`, `id_user`, `salle_name`, `place_numero`, `reservation_date`, `price`) VALUES
-(19, 56, 'salle_2', 12, '2023-02-16', 60),
-(20, 56, 'salle_2', 49, '2023-02-24', 60),
-(21, 56, 'salle_2', 50, '0000-00-00', 60),
-(22, 56, 'salle_2', 44, '0000-00-00', 40);
 
 -- --------------------------------------------------------
 
@@ -166,7 +156,7 @@ INSERT INTO `salle_2` (`id_place`, `place_numero`, `reserve`) VALUES
 (9, 9, 0),
 (10, 10, 0),
 (11, 11, 0),
-(12, 12, 1),
+(12, 12, 0),
 (13, 13, 0),
 (14, 14, 0),
 (15, 15, 0),
@@ -198,13 +188,13 @@ INSERT INTO `salle_2` (`id_place`, `place_numero`, `reserve`) VALUES
 (41, 41, 0),
 (42, 42, 0),
 (43, 43, 0),
-(44, 44, 1),
+(44, 44, 0),
 (45, 45, 0),
 (46, 46, 0),
 (47, 47, 0),
 (48, 48, 0),
-(49, 49, 1),
-(50, 50, 1);
+(49, 49, 0),
+(50, 50, 0);
 
 -- --------------------------------------------------------
 
@@ -289,24 +279,6 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `user`
---
-
-INSERT INTO `user` (`id`, `name`, `email`, `password`, `token`) VALUES
-(45, 'marouane', 'uanemaro216@gmail.com', '$2y$10$vTiHzQwmzkU.LbBrddUyT.N16UINP4aDVFYKsnp3Zu8Xt3VdIPvoi', '5f2539fe9f1cc56b938c509cec3e11ad'),
-(46, 'hamza', 'hamza@gmail.com', '$2y$10$8WplsIAfrmTA0Ig9exLJRemGj4YtAdP1CHvpkOB93yn9TSg2s1nO.', 'bb2d07489bce0112223132ab14d66815'),
-(47, 'ayoub', 'ayoub@gmail.com', '$2y$10$AumJnyIw9dZzKsA/5jPNK.vweO1kaONa7qZWNrlDizAg.9EecTtTi', '60659d29690bb24536e8c6a96f182740'),
-(48, 'zineb', 'zineb@gmail.com', '$2y$10$NFQOgs6ek0Ju0dlISqsSP.ZA.3/g96qj5Eq6ODU8fTTd5ZGFYPU9q', '56c4e855e679c7723446c916d9d0fcc2'),
-(49, 'mohammed', 'mohammed@gmail.com', '$2y$10$J1tdkqNiXMGlb9HeIQ7ZXenH2LvJWp.nL.a5yHVn3ooJ7lT4tC6Yu', '89b212c3ddaaeca44521acdef63e12cd'),
-(50, 'mohtan', 'mohtan@gmail.com', '$2y$10$VqCHlxJMYekabjlqYT9v8OLRSOEYq8wmNPnJTSV0e37UZjmGmewGq', '4321d213c9c975462db3691c77aed2bf'),
-(51, 'mohe', 'mohe@gmail.com', '$2y$10$z4l0s5lxW3LlRyufkCsr..0Op8Z.Z6Hq3b5RF6mFYJYDuytfaRd/m', 'c3e6e588db58f49822741d686294101b'),
-(52, 'miloud', 'miloud@gmail.com', '$2y$10$/ERMxJ1VkB6h/unFoSwwTOqrNyT1azWEecLYoaJKWfKEbgJmaxVne', '81fb1fb43dede5f4e1649e4f729ff5c3'),
-(53, 'ikram', 'ikram@gmail.com', '$2y$10$mrmRFaSlVbNwkvswFnnQB.JZDxyetbflmYgFBqx.R6eT8NBZE6Kv2', '53e725af96e90627380fa8c6b21f26f4'),
-(54, 'pc', 'pc@gmail.com', '$2y$10$HVL/pL6y28McAiwuTT6KIOaGSmVuCYC483RmcLg10G3eXzP6/A/2e', 'd4d8a10b8ed89f71d490c140348d535a'),
-(55, 'sidati', 'sidati@gmail.com', '$2y$10$AdslQVMQgGxZAhYlEd2zDuageA0cPp2aNlN3R0H585rx3Uz9NZd3O', 'b501e7d5a7fa3de533fbfa1acaf9c4c1'),
-(56, 'me', 'me@gmail.com', '$2y$10$SO0xEAx6XNFXY0BUCimEMeBJIdNN0T9iSkLK.cPeGTAo5ByM63hTq', '72f71385170f840e36611ece7ab88730');
-
---
 -- Index pour les tables déchargées
 --
 
@@ -321,7 +293,7 @@ ALTER TABLE `films`
 -- Index pour la table `reservation`
 --
 ALTER TABLE `reservation`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`id_reservation`),
   ADD KEY `user` (`id_user`),
   ADD KEY `movies` (`price`);
 
@@ -364,7 +336,7 @@ ALTER TABLE `films`
 -- AUTO_INCREMENT pour la table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_reservation` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT pour la table `salle_1`
@@ -388,7 +360,7 @@ ALTER TABLE `salle_3`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- Contraintes pour les tables déchargées
