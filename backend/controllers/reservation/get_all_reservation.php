@@ -27,7 +27,7 @@ header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,
                 extract($row);
 
                 $reservation_item = array(
-                    'id' => $id,
+                    'id' => $id_reservation,
                     'id_user' => $id_user,
                     'salle_name' => $salle_name,
                     'place_numero' => $place_numero,
