@@ -10,7 +10,6 @@ class reservation
     public $reservation_date;
     public $price;
 
-
     // films column
     public $name;
     public $time;
@@ -27,11 +26,11 @@ class reservation
 
     public function add_reservation()
     {
-        $query = 'INSERT INTO reservation (id, id_user, salle_name,place_numero,reservation_date,price)VALUES (:id_reservation, :id_user, :salle_name,:place_numero,:reservation_date,:price)';
+         
+        $query = 'INSERT INTO reservation (id_user, salle_name,place_numero,reservation_date,price)VALUES (:id_user, :salle_name,:place_numero,:reservation_date,:price)';
         // Prepare statement
         $stmt = $this->conn->prepare($query);
         // Bind values
-        $stmt->bindParam(':id_reservation', $this->id);
         $stmt->bindParam(':id_user', $this->id_user);
         $stmt->bindParam(':salle_name', $this->salle_name);
         $stmt->bindParam(':place_numero', $this->place_numero);
