@@ -2,6 +2,11 @@ const id_user = localStorage.getItem("id");
 const hallName = localStorage.getItem("hallName");
 const pricePlace = localStorage.getItem("pricePlace");
 
+/*<div id="inputJS">
+
+</div>
+<script src="../layout/js/reserve.js"></script> */
+
 if (!id_user || id_user == 'null' || id_user == 'undefined') {
   location.replace("../users/login.php");
 } else {

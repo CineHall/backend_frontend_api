@@ -22,9 +22,11 @@ class halls{
         $stmt->execute();
         return $stmt;
     }
-    public function get_full_places($table)
+    public function get_full_places($table,$date)
     {
-        $query = 'SELECT * FROM ' . $table.' WHERE reserve = 1';
+        $query = "
+        SELECT * FROM $table ha, reservation re WHERE re.reservation_date = '$date' AND ha.id_place NOT IN ( SELECT place_numero FROM reservation r WHERE r.salle_name = '$table' )
+        ";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt;

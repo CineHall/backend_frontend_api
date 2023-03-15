@@ -28,7 +28,7 @@ fetch("http://localhost/backend_frontend_api/backend/controllers/movies/getMovie
         card += '<span>Prix De Tickette : ' + data.place_price + ' DH</span>'
         card += '<span>Nom De Salle : ' + hall_name + '</span>'
         card += '<div>'
-        card += '<a href="../reservation/reserve.php">reserve</a>'
+        card += '<a href="../reservation/date.php">reserve</a>'
         card += '</div >'
         card += '</div>'
         localStorage.setItem("pricePlace", data.place_price);
