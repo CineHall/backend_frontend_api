@@ -25,14 +25,36 @@ class halls{
     public function get_full_places($table,$date)
     {
         $query = "
-        SELECT * FROM $table ha, reservation re WHERE re.reservation_date = '$date' AND ha.id_place NOT IN ( SELECT place_numero FROM reservation r WHERE r.salle_name = '$table' )
+        SELECT * FROM $table ha, reservation re where ha.place_numero = re.place_numero and re.reservation_date = '$date'
         ";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt;
     }
-    public function get_empty_places($table)
+    public function get_empty_places($table,$date)
     {
+        $result = $this->get_full_places($table,$date);
+
+        $num = $result->rowCount();
+ 
+        if ($num > 0) {
+            // movie array
+            $place_arr = array();
+            // $movies_arr['data'] = array();
+        
+            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                extract($row);
+                $place_item = array(
+                    'id_place' => $id_place
+                );
+
+                // Push to "data"
+                array_push($place_arr, $place_item);
+            }
+            var_dump($place_arr);
+            die;
+        }
+            
         $query = 'SELECT * FROM ' . $table.' WHERE reserve = 0';
         
         $stmt = $this->conn->prepare($query);

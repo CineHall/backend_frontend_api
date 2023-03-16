@@ -21,7 +21,7 @@ header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,
 
         $date = $data->reservation_date;
 
-        $result = $halls->get_full_places('salle_1',$date);
+        $result = $halls->get_empty_places('salle_1',$date);
         $num = $result->rowCount();
  
 
