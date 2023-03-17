@@ -18,9 +18,10 @@ if (!id_user || id_user == 'null' || id_user == 'undefined') {
 
 form.addEventListener('submit', event => {
     event.preventDefault();
+    var divInput = document.getElementById('inputs')
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
-      fetch(`http://localhost/backend_frontend_api/backend/controllers/${hallName}/places.php`, {
+      fetch(`http://localhost/backend_frontend_api/backend/controllers/${hallName}/get_empty_places.php`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -30,9 +31,45 @@ form.addEventListener('submit', event => {
     .then(res => res.json())
     .then(data => {
       console.log(data)
-      if (data.message != 'No places Found') {
+      if (data.message == 'No full places Found') {
+        formInput = `
+        <div class="radioInput">`
+        for (let i = 1; i < 51; i++) {
+          formInput += `
+            <div class = "radioSeats">
+                <input type="radio" id="Choice-${i}" name="place_numero" value="${i}">
+                <label for="Choice-${i}">
+                    <img class = "seats" src="http://localhost/backend_frontend_api/backend/img/seats.png" alt="place">
+                    <span>${i}</span>
+                </label>
+            </div>
+          `;
+        }
+        
+        formInput += `</div>`
+        let inputs = document.createElement('div');
+        inputs.innerHTML = formInput;
+        divInput.append(inputs);
         // location.replace("../reservation/reservation.php");
       } else {
+        formInput = `
+    <div class="radioInput">`
+    for (let i = 0; i < data.length; i++) {
+      formInput += `
+        <div class = "radioSeats">
+            <input type="radio" id="Choice-${i}" name="place_numero" value="${data[i]}">
+            <label for="Choice-${i}">
+                <img class = "seats" src="http://localhost/backend_frontend_api/backend/img/seats.png" alt="place">
+                <span>${data[i]}</span>
+            </label>
+        </div>
+      `;
+    }
+    formInput += `
+    </div>`
+    let inputs = document.createElement('div');
+    inputs.innerHTML = formInput;
+    divInput.append(inputs);
         // location.replace("./reserve.php");
       }
     });

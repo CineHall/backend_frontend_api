@@ -27,7 +27,7 @@ button:hover {
 }
 /* End All */
 /* Start Form */
-.form,.form #inputJS div {
+.form,.form #inputs div {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -177,26 +177,27 @@ button:hover {
 
 /* Start Reserve Page */
 
-#inputJS div .radioInput{
+#inputs div .radioInput{
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(5, 4rem);
     grid-gap: 10px;
+    justify-content: center;
 } 
-#inputJS div .radioInput .radioSeats {
+#inputs div .radioInput .radioSeats {
     display: flex;
     flex-direction: row;
 }
-#inputJS div .radioInput .Full {
+#inputs div .radioInput .Full {
 margin-right: -8px;
 margin-top: 13px;
 }
-#inputJS div .radioInput .radioSeats input {
+#inputs div .radioInput .radioSeats input {
     width: 1rem;
 }
-#inputJS div .radioInput .radioSeats label .seats{
+#inputs div .radioInput .radioSeats label .seats{
     width: 1.5rem;
 } 
-#inputJS div .radioInput .radioSeats label .full_place{
+#inputs div .radioInput .radioSeats label .full_place{
     width: 2rem;
 }
 
