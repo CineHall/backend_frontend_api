@@ -25,9 +25,9 @@ header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,
         $num = $result->rowCount();
  
 
+        // movie array
+        $place_arr = array();
         if ($num > 0) {
-            // movie array
-            $place_arr = array();
             // $movies_arr['data'] = array();
         
             while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
@@ -39,7 +39,8 @@ header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,
                 // Push to "data"
                 array_push($place_arr, $place_item);
             }
-        
+            $place_full_arr = $place_arr;
+        var_dump($place_arr);die;
             // Turn to JSON & output
             echo json_encode($place_arr);
         } else {

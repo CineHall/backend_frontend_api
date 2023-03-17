@@ -25,11 +25,11 @@ class halls{
     public function get_full_places($table,$date)
     {
         $query = "
-        SELECT * FROM $table ha, reservation re where ha.place_numero = re.place_numero and re.reservation_date = '$date'
+        SELECT * FROM $table ha, reservation re where ha.place_numero = re.place_numero and re.salle_name = '$table' and re.reservation_date = '$date'
         ";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
-        return $stmt;
+        return $stmt; 
     }
     public function get_empty_places($table,$date)
     {
@@ -37,9 +37,9 @@ class halls{
 
         $num = $result->rowCount();
  
+        // movie array
+        $place_arr = array();
         if ($num > 0) {
-            // movie array
-            $place_arr = array();
             // $movies_arr['data'] = array();
         
             while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
@@ -51,9 +51,9 @@ class halls{
                 // Push to "data"
                 array_push($place_arr, $place_item);
             }
-            var_dump($place_arr);
-            die;
         }
+        var_dump($place_arr);
+        die;
             
         $query = 'SELECT * FROM ' . $table.' WHERE reserve = 0';
         

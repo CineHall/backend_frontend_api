@@ -1,9 +1,11 @@
 <?php
 
 
+
+session_start();
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json; charset=utf-8');
-header('Access-Control-Allow-Methods: GET');
+header('Access-Control-Allow-Methods: GET,POST');
 header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
 
         require_once '../../config/Database.php';
@@ -15,35 +17,38 @@ header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,
 
         $halls = new halls($connect);
 
-        $result = $halls->get_full_places('salle_3');
+        $data = json_decode(file_get_contents("php://input"));
 
+        $date = $data->reservation_date;
+
+        $result = $halls->get_full_places('salle_3',$date);
         $num = $result->rowCount();
+ 
 
         if ($num > 0) {
             // movie array
-            $halls_arr = array();
+            $place_arr = array();
             // $movies_arr['data'] = array();
         
             while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                 extract($row);
-                $hall_item = array(
-                    'id_place' => $id_place,
-                    'place_numero' => $place_numero,
-                    'reserve' => $reserve
+                $place_item = array(
+                    'id_place' => $id_place
                 );
 
-               
-        
                 // Push to "data"
-                array_push($halls_arr, $hall_item);
+                array_push($place_arr, $place_item);
             }
-        
+            
+            $place_full_arr = $place_arr;
+            var_dump($place_full_arr);
+            die;
             // Turn to JSON & output
-            echo json_encode($halls_arr);
+            echo json_encode($place_arr);
         } else {
             // No movies
             echo json_encode(
-                array('message' => 'No halls Found')
+                array('message' => 'No fullPlaces Found')
             );
         }
 

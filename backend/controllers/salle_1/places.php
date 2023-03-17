@@ -21,13 +21,13 @@ header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,
 
         $date = $data->reservation_date;
 
-        $result = $halls->get_empty_places('salle_1',$date);
+        $result = $halls->get_full_places('salle_1',$date);
         $num = $result->rowCount();
  
 
+        // movie array
+        $place_arr = array();
         if ($num > 0) {
-            // movie array
-            $place_arr = array();
             // $movies_arr['data'] = array();
         
             while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
@@ -39,7 +39,25 @@ header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,
                 // Push to "data"
                 array_push($place_arr, $place_item);
             }
-        
+            $place_full_arr = $place_arr;
+$place_full_arr2 = [];
+$place_full_arr3 = [];
+            for ($i=1; $i < 51; $i++) { 
+                for ($j=0; $j < count($place_full_arr); $j++) { 
+                    if ($i == $place_full_arr[$j]['id_place']) {
+                        // Push to "data"
+                        array_push($place_full_arr2, $i);
+                    }
+                }
+            }
+            echo count($place_full_arr2);
+            for ($j=0; $j <count($place_full_arr2) ; $j++) { 
+                for ($i=1; $i <= $place_full_arr2[$j]; $i++) { 
+                    array_push($place_full_arr3, $i);
+                }
+            }
+            var_dump( $place_full_arr3);
+            die;
             // Turn to JSON & output
             echo json_encode($place_arr);
         } else {
