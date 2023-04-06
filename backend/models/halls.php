@@ -24,11 +24,9 @@ class halls{
     }
     public function get_full_places($table,$date)
     {
-        $query = "
-        SELECT * FROM $table ha, reservation re where ha.place_numero = re.place_numero and re.salle_name = '$table' and re.reservation_date = '$date'
-        ";
+        $query = "SELECT * FROM $table ha, reservation re where ha.place_numero = re.place_numero and re.salle_name = '$table' and re.reservation_date = '$date'";
         $stmt = $this->conn->prepare($query);
-        $stmt->execute();
+        $stmt->fetchAll();
         return $stmt; 
     }
     public function get_empty_places($table,$date)

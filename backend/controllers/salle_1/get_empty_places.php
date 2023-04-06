@@ -23,7 +23,7 @@ header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,
 
         $result = $halls->get_full_places('salle_1',$date);
         $num = $result->rowCount();
- 
+        var_dump($result,$num);die;
 
         // movie array
         $place_arr = array();

@@ -1,5 +1,6 @@
 const id_user = localStorage.getItem("id");
 const hallName = localStorage.getItem("hallName");
+console.log(id_user,hallName)
 if (!id_user || id_user == 'null' || id_user == 'undefined') {
   location.replace("../users/login.php");
 } else {
@@ -30,7 +31,7 @@ form.addEventListener('submit', event => {
   })
     .then(res => res.json())
     .then(data => {
-      console.log(data)
+      console.log(data.message)
       if (data.message == 'No full places Found') {
         formInput = `
         <div class="radioInput">`
