@@ -1,6 +1,5 @@
 const id_user = localStorage.getItem("id");
 const hallName = localStorage.getItem("hallName");
-const pricePlace = localStorage.getItem("pricePlace");
 if (!id_user || id_user == 'null' || id_user == 'undefined') {
   location.replace("../users/login.php");
 } else {
@@ -53,10 +52,7 @@ form.addEventListener('submit', event => {
         divInput.append(inputs);
         // location.replace("../reservation/reservation.php");
       } else {
-        formInput = `<form id = "place">
-        <input type="hidden" value="${id_user}" readonly name="id_user">
-        <input type="text" value="${hallName}" readonly name="salle_name">
-        <input type="text" value="${pricePlace}" readonly name="price">
+        formInput = `
     <div class="radioInput">`
     for (let i = 0; i < data.length; i++) {
       formInput += `
@@ -70,9 +66,7 @@ form.addEventListener('submit', event => {
       `;
     }
     formInput += `
-    </div>
-    <input type = "submit" value ="book">
-    </form>`
+    </div>`
     let inputs = document.createElement('div');
     inputs.innerHTML = formInput;
     divInput.append(inputs);
@@ -80,29 +74,8 @@ form.addEventListener('submit', event => {
       }
     });
 })
-var formPlaces = document.getElementById('place');
 
-formPlaces.addEventListener('submit', event => {
-  event.preventDefault();
-  var divInput = document.getElementById('inputs')
-  const formData = new FormData(form);
-  const data = Object.fromEntries(formData);
-  fetch('http://localhost/backend_frontend_api/backend/controllers/Reservation/add_reservation.php', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  })
-    .then(res => res.json())
-    .then(data => {
-      if (data.message === 'Reservation Created') {
-        location.replace("../reservation/reservation.php");
-      } else {
-        location.replace("./date.php");
-      }
-    });
-});
+
 // fetch(`http://localhost/backend_frontend_api/backend/controllers/${hallName}/get_empty_places.php`, {
 //   method: 'GET',
 //   headers: {
