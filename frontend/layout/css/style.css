@@ -27,11 +27,10 @@ button:hover {
 }
 /* End All */
 /* Start Form */
-.form,.form #inputs div {
+.form,.form2,.form #inputs div,.form2 #inputs div {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
 }
 
 .form input {
@@ -40,7 +39,9 @@ button:hover {
     border-radius: 0.3rem;
 }
 .btnSubmit,
-.form button {
+.form button,
+.form2 button {
+    margin-top: 10px;
     width: 5rem;
     background-color: #ff000091;
     border-radius: 1rem;

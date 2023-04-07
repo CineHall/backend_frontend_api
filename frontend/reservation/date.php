@@ -8,8 +8,5 @@
 
     </div>
 </form>
-<div id="No_place_empty">
-    
-</div>
 <script src="../layout/js/date.js"></script>
 <?php include('../inc/footer.php') ?>

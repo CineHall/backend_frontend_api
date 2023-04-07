@@ -18,6 +18,7 @@ if (!id_user || id_user == 'null' || id_user == 'undefined') {
   var form = document.querySelector(".form");
   var form2 = document.querySelector(".form2");
   var No_place_empty = document.querySelector("#No_place_empty");
+  var divVideIdInputs = `<div id = "inputs"></div>` 
 
 form.addEventListener('submit', event => {
     event.preventDefault();
@@ -60,7 +61,8 @@ form.addEventListener('submit', event => {
       `;
     }
     formInput += `
-    </div>`
+    </div>
+    <button type="submit">book now</button>`
     let inputs = document.createElement('div');
     inputs.innerHTML = formInput;
     divInput.append(inputs);
