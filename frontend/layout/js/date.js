@@ -34,7 +34,7 @@ form.addEventListener('submit', event => {
     .then(res => res.json())
     .then(data => {
       console.log(data.message)
-      if (data.message == 'No full places Found') {
+      if (data.message == 'No empty places Found') {
         formInput = `
         <div class="radioInput">`
         for (let i = 1; i < 51; i++) {

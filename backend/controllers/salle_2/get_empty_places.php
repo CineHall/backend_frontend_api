@@ -39,6 +39,7 @@ header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,
             }
             // Turn to JSON & output
             echo json_encode($all_places);
+array('message' => 'empty places Found');
         } else {
             // No movies
             echo json_encode(
