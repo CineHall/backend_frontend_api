@@ -26,8 +26,9 @@ class halls{
     {
         $query = "SELECT * FROM $table ha, reservation re where ha.place_numero = re.place_numero and re.salle_name = '$table' and re.reservation_date = '$date'";
         $stmt = $this->conn->prepare($query);
-        $stmt->fetchAll();
-        return $stmt; 
+        $stmt->execute();
+        $rows = $stmt->fetchAll();
+        return $rows; 
     }
     public function get_empty_places($table,$date)
     {
@@ -50,8 +51,6 @@ class halls{
                 array_push($place_arr, $place_item);
             }
         }
-        var_dump($place_arr);
-        die;
             
         $query = 'SELECT * FROM ' . $table.' WHERE reserve = 0';
         

@@ -22,63 +22,27 @@ header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,
         $date = $data->reservation_date;
 
         $result = $halls->get_full_places('salle_3',$date);
-        $num = $result->rowCount();
- 
+        $num = count($result);
 
-        // movie array
-        $place_arr = array();
-        $place_arr2 = array();
-        $place_arr_full = array();
-        $place_arr_empty = array();
-        if ($num > 0) {
-            // $movies_arr['data'] = array();
-        
-            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                extract($row);
-                $place_item = array(
-                    'id_place' => $id_place
-                );
 
-                // Push to "data"
-                array_push($place_arr, $place_item);
-            }
-            for ($f=0; $f < count($place_arr); $f++) { 
-                array_push($place_arr_full , $place_arr[$f]['id_place']);
-            }
+        if ($num > 0) {    
+            $all_places = [];
             for ($i=1; $i < 51; $i++) { 
-                for ($j=0; $j < count($place_arr_full); $j++) { 
-                    if ($i != $place_arr_full[$j]) {
-                        array_push($place_arr2,$i);
+                array_push($all_places,$i);
+            }
+            for ($k=0; $k < 50; $k++) { 
+                for ($j=0; $j < $num; $j++) {
+                    if ($result[$j]['place_numero'] === $all_places[$k]) {
+                        unset($all_places[$k]);
                     }
                 }
             }
-            for ($ee=0; $ee < count($place_arr2) ; $ee++) { 
-                for ($f=0; $f < count($place_arr_full); $f++) { 
-                    if ($place_arr2[$ee] == $place_arr_full[$f]) {
-                        unset($place_arr2[$ee]);
-                    }
-                }
-            }
-            for ($e=0; $e < count($place_arr2) ; $e++) { 
-                if ($place_arr2[$e] == $place_arr2 [$e+1]) {
-                    array_push($place_arr_empty,$place_arr2[$e]);
-                }
-            }
-
- // Turn to JSON & output
-            echo json_encode($place_arr_empty);
+            // Turn to JSON & output
+            echo json_encode($all_places);
         } else {
             // No movies
             echo json_encode(
-                array('message' => 'No full places Found')
+                array('message' => 'No empty places Found')
             );
         }
-
-
-
-
-
-
-
-
 ?>

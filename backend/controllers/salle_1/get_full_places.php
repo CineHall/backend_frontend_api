@@ -40,8 +40,6 @@ header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,
                 array_push($place_arr, $place_item);
             }
             $place_full_arr = $place_arr;
-            var_dump($place_full_arr);
-            die;
             // Turn to JSON & output
             echo json_encode($place_arr);
         } else {
