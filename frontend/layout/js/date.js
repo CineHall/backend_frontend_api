@@ -45,15 +45,16 @@ form.addEventListener('submit', event => {
         No_place_empty.setAttribute('class','No_place_empty')
         No_place_empty.innerHTML = message;
       } else {
+        console.log(data.result);
         formInput = `
     <div class="radioInput">`
-    for (let i = 0; i < data.length; i++) {
+    for (let i = 0; i < data.result.length; i++) {
       formInput += `
         <div class = "radioSeats">
-            <input type="radio" id="Choice-${i}" name="place_numero" value="${data[i]}">
+            <input type="radio" id="Choice-${i}" name="place_numero" value="${data.result[i]}">
             <label for="Choice-${i}">
                 <img class = "seats" src="http://localhost/backend_frontend_api/backend/img/seats.png" alt="place">
-                <span>${data[i]}</span>
+                <span>${data.result[i]}</span>
             </label>
         </div>
       `;

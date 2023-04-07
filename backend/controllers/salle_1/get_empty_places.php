@@ -23,6 +23,7 @@ $result = $halls->get_full_places( 'salle_1', $date );
 $num = count( $result );
 
 $all_places = [];
+$empty_places = [];
 for ( $i = 1; $i < 51; $i++ ) {
 
     array_push( $all_places, $i );
@@ -37,6 +38,12 @@ if ( $num > 0 ) {
             }
         }
     }
+    
+    for ($e=0; $e < 50; $e++) { 
+        if($all_places[ $e ] != null){
+            array_push($empty_places,$all_places[ $e ]);
+        };
+    }
     // Turn to JSON & output
     if ($num == 50) {
         echo json_encode(
@@ -48,7 +55,7 @@ if ( $num > 0 ) {
         echo json_encode(
             array(
                 'message' => 'Empty places Found',
-                'result' => $all_places
+                'result' => $empty_places
             )
         );
     }
