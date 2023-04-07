@@ -22,13 +22,13 @@ $date = $data->reservation_date;
 $result = $halls->get_full_places( 'salle_1', $date );
 $num = count( $result );
 
+$all_places = [];
+for ( $i = 1; $i < 51; $i++ ) {
+
+    array_push( $all_places, $i );
+}
+
 if ( $num > 0 ) {
-
-    $all_places = [];
-    for ( $i = 1; $i < 51; $i++ ) {
-
-        array_push( $all_places, $i );
-    }
     for ( $k = 0; $k < 50; $k++ ) {
 
         for ( $j = 0; $j < $num; $j++ ) {
@@ -38,16 +38,27 @@ if ( $num > 0 ) {
         }
     }
     // Turn to JSON & output
-    echo json_encode(
-        array(
-            'message' => 'Empty places Found',
-            'result' => $all_places
-        )
-    );
+    if ($num == 50) {
+        echo json_encode(
+            array(
+                'message' => 'No empty places Found'
+            )
+        );
+    } else {
+        echo json_encode(
+            array(
+                'message' => 'Empty places Found',
+                'result' => $all_places
+            )
+        );
+    }
 } else {
     // No movies
-    echo json_encode(
-        array( 'message' => 'No empty places Found' )
-    );
+            echo json_encode(
+                array(
+                    'message' => 'Empty places Found',
+                    'result' => $all_places
+                )
+            );
 }
 ?>
