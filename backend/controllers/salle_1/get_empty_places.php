@@ -39,7 +39,7 @@ if ( $num > 0 ) {
     }
     // Turn to JSON & output
     echo json_encode( $all_places );
-    array( 'message' => 'empty places Found' );
+    array('message' => 'empty places Found');
 } else {
     // No movies
     echo json_encode(

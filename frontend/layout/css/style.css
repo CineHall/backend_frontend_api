@@ -39,7 +39,7 @@ button:hover {
     border: 1px solid;
     border-radius: 0.3rem;
 }
-
+.btnSubmit,
 .form button {
     width: 5rem;
     background-color: #ff000091;
@@ -47,6 +47,7 @@ button:hover {
     color: black;
 }
 
+.btnSubmit :hover,
 .form button:hover {
     background-color: red;
     color: white;
@@ -240,5 +241,17 @@ margin-top: 13px;
     display: flex !important;
     flex-direction: column !important;
     width: 26rem;
+}
+.No_place_empty {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.No_place_empty a {
+    width: auto;
+    padding: 10px 15px;
+    text-decoration: none;
 }
 /* End Reservations Page */

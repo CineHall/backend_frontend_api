@@ -17,6 +17,7 @@ if (!id_user || id_user == 'null' || id_user == 'undefined') {
 
   var form = document.querySelector(".form");
   var form2 = document.querySelector(".form2");
+  var No_place_empty = document.querySelector("#No_place_empty");
 
 form.addEventListener('submit', event => {
     event.preventDefault();
@@ -35,27 +36,14 @@ form.addEventListener('submit', event => {
     .then(data => {
       console.log(data.message)
       if (data.message == 'No empty places Found') {
-        formInput = `
-        <div class="radioInput">`
-        for (let i = 1; i < 51; i++) {
-          formInput += `
-            <div class = "radioSeats">
-                <input type="radio" id="Choice-${i}" name="place_numero" value="${i}">
-                <label for="Choice-${i}">
-                    <img class = "seats" src="http://localhost/backend_frontend_api/backend/img/seats.png" alt="place">
-                    <span>${i}</span>
-                </label>
-            </div>
-          `;
-        }
-        
-        formInput += `
-        <button type="submit">reserve</button>
-        </div>`
-        let inputs = document.createElement('div');
-        inputs.innerHTML = formInput;
-        divInput.append(inputs);
-        // location.replace("../reservation/reservation.php");
+        var message = `
+          <p>
+            No empty places Found
+          </p>
+          <a href ="../movies/movies.php" class= "btnSubmit">Go To Movies And Show Others</a>
+        `
+        No_place_empty.setAttribute('class','No_place_empty')
+        No_place_empty.innerHTML = message;
       } else {
         formInput = `
     <div class="radioInput">`
